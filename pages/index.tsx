@@ -25,14 +25,6 @@ import web3 from '../public/web3.png'
 
 export default function Home() {
 
-const handleClick = (e) =>  {
-  const names = ['Jonah', 'Fred']
-  const data='Jonah, Peter'
-  return (
-    <p>{data}</p>)
-
-}
-
    return (
     
     <div>
