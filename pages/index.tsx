@@ -61,7 +61,7 @@ export default function Home() {
             <AiFillTwitterCircle />
           </div>
           <div className='relative mx-auto rounded-full w-80 h-80 mt-20 mb-10 overflow-auto scale-100 hover:scale-125 ease-in duration-500'>
-            <Image src={deved} layout='fill' objectFit='cover'/>
+            <Image src={deved} layout='fill' objectFit='cover' alt='avi'/>
           </div>
         </section>
 
@@ -119,7 +119,7 @@ export default function Home() {
               </div>
 
               <div className='text-center shadow-lg shadow-slate-500 p-10 my-10 pb-5 rounded-xl max-w-xl justify-center md:px-32 lg:px-30'>
-                <Image src={table} className='mx-auto scale-125'/>
+                <Image src={table} className='mx-auto scale-125' alt='data table icon'/>
                 <h3 className='text-lg font-medium pt-8 pb-2'>Data Modeling</h3>
                 <p>Creating elegant designs suited for you needs following core design theory</p>
                 <h4 className='py-4 text-teal-600'>Design tools I use</h4>
@@ -141,13 +141,13 @@ export default function Home() {
             <p className='text-md py-2 leading-8 text-gray-80'> I offer from a wide range of services, including brand design, programming and teaching.
             </p>
               <div>
-                <Image src={web1}></Image>
+                <Image src={web1} alt='img 1'></Image>
               </div>
               <div>
-                <Image src={web2}></Image>
+                <Image src={web2} alt='img 2'></Image>
               </div>
               <div>
-                <Image src={web3}></Image>
+                <Image src={web3} alt='img 3'></Image>
               </div>
           </div>
         </section>
