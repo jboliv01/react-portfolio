@@ -73,7 +73,7 @@ export default function Home() {
             As a highly skilled data professional, I specialize in delivering data-driven solutions that help organizations unlock the full potential of their data. 
             My expertise includes building ETL pipelines, extracting and transforming data, and creating interactive dashboards. 
             </p>
-            <p className='text-md py-2 leading-8 text-gray-80'>Utilizing technologies such as <span className='text-teal-500'>Python, SQL Server, Azure DevOps, PowerBI and more</span>, 
+            <p className='text-md py-2 leading-8 text-gray-80'>Utilizing technologies such as <span className='text-teal-500'>Python, SQL Server, Azure DevOps, PowerBI</span> and more, 
             I am well-equipped to provide end-to-end data services to organizations of all sizes.
             </p>
           </div>
