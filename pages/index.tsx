@@ -132,7 +132,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section>
+        {/* <section>
           <div>
             <h3 className='text-3xl py-1'>Portfolio</h3>
             <p className='text-md py-2 leading-8 text-gray-80'>Since the beginning of my journey as a freelance designer
@@ -152,7 +152,7 @@ export default function Home() {
                 <Image src={web3} alt='img 3'></Image>
               </div>
           </div>
-        </section>
+        </section> */}
 
       </main>
     </div>
