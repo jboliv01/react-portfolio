@@ -10,6 +10,8 @@ import {
   AiFillTwitterCircle, 
   AiFillLinkedin
 } from 'react-icons/ai'
+
+
 import deved from '../public/avi1.png'
 import visualization from '../public/DataVisualization.png'
 import code from '../public/code_snippet.png'
@@ -26,7 +28,7 @@ import web3 from '../public/web3.png'
 export default function Home() {
 
    return (
-    
+
     <div>
       <Head>
         <title>Jonah Oliver Portfolio</title>
@@ -49,9 +51,9 @@ export default function Home() {
           </nav>
           <div className='text-center p-10 py-1'>
             <h2 className='text-5xl py-2 text-teal-600 font-bold md:text-6xl'>Jonah Oliver</h2>
-            <h3 className='text-2xl py-2 md:text-3xl'>Data Analyst and Developer</h3>
-            <p className='text-med py-5 leading-8 text-gray-800 md:text-xl max-w-lg mx-auto'>Freelancer providing services for programming and data analysis needs. Join 
-              me down below and let's get to work!
+            <h3 className='text-2xl py-2 md:text-3xl'>Data Analyst and Programmer</h3>
+            <p className='text-med py-5 leading-8 text-gray-800 md:text-xl max-w-lg mx-auto'>Skilled data professional with experience in ETL pipeline building, data extraction, and dashboard creation. 
+            I have a strong background in using technologies such as Python, SQL Server, Azure DevOps, PowerBI and more.
             </p>
           </div>
           <div className='text-5xl flex justify-center gap-16 py-3 text-gray-700'>
