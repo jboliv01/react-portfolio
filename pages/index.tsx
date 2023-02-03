@@ -44,6 +44,7 @@ export default function Home() {
           <ul className='flex items-center'>
               <li>
                 <BsFillMoonStarsFill onClick={() => setDarkMode(!darkMode)} className='text-xl cursor-pointer text-3xl mr-3 dark:text-teal-600 dark:hover:text-slate-400'>
+
                 </BsFillMoonStarsFill>
               </li>
               <li className='text-xl px-4 py-2 text-white bg-gradient-to-b bg-cyan-500 rounded-md dark:bg-teal-600 dark:hover:bg-slate-400 text-white'>
@@ -54,7 +55,7 @@ export default function Home() {
           <div className='text-center p-10 py-1'>
             <h2 className='text-5xl py-2 text-teal-600 font-bold md:text-6xl'>Jonah Oliver</h2>
             <h3 className='text-2xl py-2 md:text-3xl dark:text-white'>Data Analyst and Programmer</h3>
-            <p className='text-med py-5 leading-8 text-gray-800 md:text-xl max-w-lg mx-auto dark:text-slate-400'>Skilled data professional offering data-driven solutions to unlock the potential of your data.
+            <p className='text-med py-5 leading-8 text-gray-800 md:text-xl max-w-lg mx-auto dark:text-slate-400'>Skilled professional offering data-driven solutions to unlock the potential of your data.
             </p>
           </div>
           <div className='text-5xl flex justify-center gap-16 py-3 text-gray-700'>
@@ -80,7 +81,7 @@ export default function Home() {
             </p>
           </div>
           <div className='flex flex-wrap lg:gap-10 mx-auto justify-center'>
-              <div className='text-center shadow-lg shadow-slate-800 p-10 my-10 pb-5 rounded-xl max-w-xl md:px-32 lg:px-30 dark:bg-slate-800 shadow-none'>
+              <div className='text-center shadow-lg shadow-slate-800 p-10 my-10 pb-5 rounded-xl max-w-xl md:px-32 lg:px-30 dark:bg-slate-800 dark:shadow-none'>
                 <div className='mx-auto pb-8'>
                   <div className='flex items-end justify-evenly h-40'>
                     <div className='bg-cyan-500 mr-5 w-1/4 h-2/6 rounded-t-lg transform hover:scale-125 ease-in duration-50 hover:bg-cyan-300 dark:bg-teal-600'></div>
@@ -90,46 +91,47 @@ export default function Home() {
                   </div>
                 </div>
                 <h3 className='text-lg font-medium pt-5 pb-2 dark:text-white'>Data Visualization</h3>
-                <p className='dark:text-white'>Creating elegant designs suited for you needs following core design theory</p>
+                <p className='dark:text-white'>Creating elegant visualizations suited for your reporting needs.</p>
                 <h4 className='py-2 text-teal-600' >Visualization tools I use</h4>
                 <p className='text-gray-800 py-1 dark:text-slate-400'>Python</p>
                 <p className='text-gray-800 py-1 dark:text-slate-400'>Power BI</p>
                 <p className='text-gray-800 py-1 dark:text-slate-400'>Excel </p>
               </div>
 
-              <div className='text-center shadow-lg shadow-slate-500 p-10 my-10 pb-5 rounded-xl max-w-xl md:px-32 lg:px-30  dark:bg-slate-800 shadow-none'>
+              <div className='text-center shadow-lg shadow-slate-500 p-10 my-10 pb-5 rounded-xl max-w-xl md:px-32 lg:px-30  dark:bg-slate-800 dark:shadow-none'>
                 <div className='text-center mx-auto bg-neutral-800 text-white rounded-xl'>
                 <div className='mx-auto bg-neutral-600 rounded-t-xl h-8 pt-2'>
                 <BsFillPlayFill className='scale-125 cursor-pointer ml-3 hover:text-teal-600 dark:hover:text-teal-400'></BsFillPlayFill>
                 </div>
                 
-                <ul className='text-justify text-teal-600 rounded-xl h-40 pt-5 md:px-10 md:h-40 lg: px-10 dark:text-teal-600'>
-                  <pre>
+                <ul className='text-justify text-teal-600 rounded-xl h-40 pt-5 sm:px-5 md:px-10 md:h-40 lg: px-10 dark:text-teal-600'>
+                <pre className=''>
                   <li>1 | def HelloWorld(name=None):</li>
                   <li>2 |    return f"Hello, &#123;name&#125;"</li>
                   <li>3 |</li>
                   <li>4 | HelloWorld(name='Jonah')</li>
-                  </pre>
+                </pre>
                 </ul>
                 
                 </div>
                 <h3 className='text-lg font-medium pt-5 pb-2  dark:text-white'>Programming</h3>
-                <p className='dark:text-white'>Creating elegant designs suited for you needs following core design theory</p>
+                <p className='dark:text-white'>Creating efficient and effective solutions through expert programming.</p>
                 <h4 className='py-2 text-teal-600'>Programming tools I use</h4>
                 <p className='text-gray-800 py-1 dark:text-slate-400'>Python</p>
                 <p className='text-gray-800 py-1 dark:text-slate-400'>SQL</p>
                 <p className='text-gray-800 py-1 dark:text-slate-400'>Excel </p>
               </div>
 
-              <div className='text-center shadow-lg shadow-slate-500 p-10 my-10 pb-5 rounded-xl max-w-xl justify-center md:px-32 lg:px-30 dark:bg-slate-800 shadow-none'>
+              {/* <div className='text-center shadow-lg shadow-slate-500 p-10 my-10 pb-5 rounded-xl max-w-xl justify-center md:px-32 lg:px-30 dark:bg-slate-800 dark:shadow-none'>
                 <Image src={table} className='mx-auto scale-125' alt='data table icon'/>
                 <h3 className='text-lg font-medium pt-8 pb-2 dark:text-white'>Data Modeling</h3>
+
                 <p className='dark:text-white'>Creating elegant designs suited for you needs following core design theory</p>
                 <h4 className='py-4 text-teal-600'>Design tools I use</h4>
                 <p className='text-gray-800 py-1 dark:text-slate-400'>Photoshop</p>
                 <p className='text-gray-800 py-1 dark:text-slate-400'>Illustrator</p>
                 <p className='text-gray-800 py-1 dark:text-slate-400'>Figma</p>
-              </div>
+              </div> */}
           </div>
         </section>
 
