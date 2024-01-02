@@ -2,7 +2,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+Before getting started, make sure you have Node.js and npm (or yarn) installed on your machine.
+
+To set up the development environment, follow these steps:
+
+1. Clone the repository.
+2. Navigate to the project directory in your terminal.
+3. Install the project dependencies using npm or yarn:
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -32,3 +40,23 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Dependencies
+
+- Next.js
+- React
+- Other dependencies...
+
+## Package Dependencies
+
+- marked
+- gray-matter
+- next/router
+- fs
+- path
+- react
+- react-dom
+- react-icons
+- tailwinds
+- tailwinds/typography
+
