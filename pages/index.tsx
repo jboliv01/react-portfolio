@@ -33,8 +33,14 @@ export async function getStaticProps() {
   }
 }
 
+// Define the type for the post data
+type Post = {
+  id: string;
+  contentHtml: string;
+  // Add other properties from the post metadata section
+}
 
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData }: { allPostsData: Post[] }) {
   const [darkMode, setDarkMode] = useState(true);
   return (
 
@@ -63,7 +69,7 @@ export default function Home({ allPostsData }) {
         </section>
         <section className='bg-slate-200 dark:bg-slate-800 rounded-2xl flex flex-col md:flex-row 
         justify-center items-center text-center md:text-left max-w-7xl mx-auto py-5 '>
-          <div className='flex flex-col md:flex-row items-center md:items-start text-center md:text-left'>
+          <div className='flex flex-col pt-5 md:flex-row md:px-10 sm:px-5 items-center md:items-start text-center md:text-left'>
             <div className='md:flex-grow '>
               <h2 className='text-5xl py-2 text-teal-600 font-bold md:text-6xl'>Jonah Oliver</h2>
               <h3 className='text-2xl py-2 text-teal-500 md:text-3xl dark:text-white'>Data Analyst and Programmer</h3>
