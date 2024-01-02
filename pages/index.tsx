@@ -36,6 +36,9 @@ export async function getStaticProps() {
 // Define the type for the post data
 type Post = {
   id: string;
+  date: Date;
+  title: string;
+  tags: [];
   contentHtml: string;
   // Add other properties from the post metadata section
 }
