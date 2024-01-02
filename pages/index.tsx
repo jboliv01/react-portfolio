@@ -1,19 +1,20 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
-import {useState} from 'react'
+import { useState } from 'react'
 import {
-  BsFillMoonStarsFill, 
+  BsFillMoonStarsFill,
   BsFillPlayFill,
   BsFillPlayCircleFill
 } from 'react-icons/bs';
 import {
-  AiFillTwitterCircle, 
+  AiFillTwitterCircle,
   AiFillLinkedin
 } from 'react-icons/ai'
 
+import { getSortedPostsData } from '../lib/posts.js'
 
-import deved from '../public/avi1.png'
+import deved from '../public/portrait.png'
 import visualization from '../public/DataVisualization.png'
 import code from '../public/code_snippet.png'
 import table from '../public/icons8-table-96.png'
@@ -23,12 +24,28 @@ import web2 from '../public/web2.png'
 import web3 from '../public/web3.png'
 
 
+export async function getStaticProps() {
+  const allPostsData = await getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
+}
 
+// Define the type for the post data
+type Post = {
+  id: string;
+  date: string; // Assuming date is a string, you can adjust the type as needed
+  title: string;
+  tags: string[];
+  contentHtml: string;
+  // Add other properties from the post metadata section
+}
 
-
-export default function Home() {
+export default function Home({ allPostsData }: { allPostsData: Post[] }) {
   const [darkMode, setDarkMode] = useState(true);
-   return (
+  return (
 
     <div className={darkMode ? 'dark' : ''}>
       <Head>
@@ -38,10 +55,10 @@ export default function Home() {
       </Head>
 
       <main className='bg-white px-10 md:px-20 lg:px-40 dark:bg-gray-900'>
-        <section className='min-h-screen'>
+        <section className=' max-w-7xl mx-auto'>
           <nav className='py-10 mb-1 flex justify-between'>
-          <h1 className='text-xl font-burtons dark:text-slate-400'>developedbyjonah</h1>
-          <ul className='flex items-center'>
+            <h1 className='text-xl font-burtons text-slate-600 dark:text-slate-400'>developedbyjonah</h1>
+            <ul className='flex items-center'>
               <li>
                 <BsFillMoonStarsFill onClick={() => setDarkMode(!darkMode)} className='text-xl cursor-pointer text-3xl mr-3 dark:text-teal-600 dark:hover:text-slate-400'>
 
@@ -50,90 +67,63 @@ export default function Home() {
               <li className='text-xl px-4 py-2 text-white bg-gradient-to-b bg-cyan-500 rounded-md dark:bg-teal-600 dark:hover:bg-slate-400 text-white'>
                 <a target="_blank" rel="noopener noreferrer" href="https://1drv.ms/b/s!AvaHb03-LlJmi3MGBJEK2gwC6-ji?e=aJjZzI">Resume</a>
               </li>
-          </ul>
+            </ul>
           </nav>
-          <div className='text-center p-10 py-1'>
-            <h2 className='text-5xl py-2 text-teal-600 font-bold md:text-6xl'>Jonah Oliver</h2>
-            <h3 className='text-2xl py-2 md:text-3xl dark:text-white'>Data Analyst and Programmer</h3>
-            <p className='text-med py-5 leading-8 text-gray-800 md:text-xl max-w-lg mx-auto dark:text-slate-400'>Skilled professional offering data-driven solutions to unlock the potential of your data.
-            </p>
-          </div>
-          <div className='text-5xl flex justify-center gap-16 py-3 text-gray-700'>
-            <a className=' hover:text-sky-700' href="https://www.linkedin.com/in/jonah-oliver/">
-            <AiFillLinkedin/>
-            </a>
-            <AiFillTwitterCircle />
-          </div>
-          <div className='relative mx-auto rounded-full w-80 h-80 mt-20 mb-10 overflow-auto scale-100 hover:scale-125 ease-in duration-500'>
-            <Image src={deved} layout='fill' objectFit='cover' alt='avi'/>
+        </section>
+        <section className='bg-slate-200 dark:bg-slate-800 rounded-2xl flex flex-col md:flex-row 
+        justify-center items-center text-center md:text-left max-w-7xl mx-auto py-5 '>
+          <div className='flex flex-col pt-5 md:flex-row md:px-10 sm:px-5 items-center md:items-start text-center md:text-left'>
+            <div className='md:flex-grow '>
+              <h2 className='text-5xl py-2 text-teal-600 font-bold md:text-6xl'>Jonah Oliver</h2>
+              <h3 className='text-2xl py-2 text-teal-500 md:text-3xl dark:text-white'>Data Analyst and Programmer</h3>
+              <p className='text-med py-5 leading-8 text-gray-600 md:text-xl max-w-lg  dark:text-slate-400'>
+                Skilled professional offering data-driven solutions to unlock the potential of your data.
+              </p>
+              <div className='text-5xl flex justify-center md:justify-start gap-16 py-3 text-gray-700'>
+                <a className='hover:text-sky-700' href="https://www.linkedin.com/in/jonah-oliver/">
+                  <AiFillLinkedin />
+                </a>
+                <AiFillTwitterCircle />
+              </div>
+            </div>
+            <div className='relative mx-auto rounded-full w-80 h-80 mb-10 overflow-auto scale-100 hover:scale-125 ease-in duration-500 mt-10 md:mt-0 md:ml-10'>
+              <Image src={deved} layout='fill' objectFit='cover' alt='Jonah Oliver' />
+            </div>
           </div>
         </section>
 
-        <section className='mx-auto justify-center '>
-          <div className='mx-auto justify-center pb-20'>
-            <h3 className='text-3xl py-1 dark:text-white'>Services I Offer</h3>
-            <p className='text-md py-2 leading-8 text-gray-80 dark:text-slate-400'>
-            As a highly skilled data professional, I specialize in delivering data-driven solutions that help organizations unlock the full potential of their data. 
-            My expertise includes building ETL pipelines, extracting and transforming data, and creating interactive dashboards. 
-            </p>
-            <p className='text-md py-2 leading-8 text-gray-80 dark:text-slate-400'>Utilizing technologies such as <span className='text-teal-500'>Python, SQL Server, Azure DevOps, PowerBI</span> and more, 
-            I am well-equipped to provide end-to-end data services to organizations of all sizes.
-            </p>
-          </div>
-          <div className='flex flex-wrap lg:gap-10 mx-auto justify-center'>
-              <div className='text-center shadow-lg shadow-slate-800 p-10 my-10 pb-5 rounded-xl max-w-xl md:px-32 lg:px-30 dark:bg-slate-800 dark:shadow-none'>
-                <div className='mx-auto pb-8'>
-                  <div className='flex items-end justify-evenly h-40'>
-                    <div className='bg-cyan-500 mr-5 w-1/4 h-2/6 rounded-t-lg transform hover:scale-125 ease-in duration-50 hover:bg-cyan-300 dark:bg-teal-600'></div>
-                    <div className='bg-cyan-500 mr-5 w-1/4 h-3/6 rounded-t-lg transform hover:scale-125 ease-in duration-100 hover:bg-blue-900 dark:bg-teal-600'></div>
-                    <div className='bg-cyan-500 mr-5 w-1/4 h-5/6 rounded-t-lg transform hover:scale-125 ease-in duration-100 hover:bg-blue-900 dark:bg-teal-600'></div>
-                    <div className='bg-cyan-500 mr-5 w-1/4 h-full rounded-t-lg transform hover:scale-125 ease-in duration-100 hover:bg-blue-900 dark:bg-teal-600'></div>
+        {/* blog posts */}
+        <section className='py-10'>
+          <div className='max-w-7xl mx-auto'>
+            <h3 className='text-3xl pt-2 pb-10 dark:text-white text-center'>Recent Blog Posts</h3>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+              {allPostsData.map(({ id, date, title, tags }) => (
+                <div key={id} className='bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden p-5'>
+                  <div className='mb-2'>
+                    {/* Tags go here */}
+                    <div className='flex flex-wrap gap-2 mb-4'>
+                      {tags.map((tag) => (
+                        <span key={tag} className='text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-teal-600 bg-teal-200 dark:bg-teal-700 dark:text-teal-300'>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h4 className='text-xl font-semibold mb-2 dark:text-white'>{title}</h4>
+                  
+                  </div>
+                  <div className='flex items-center justify-between mt-4'>
+                    <p className='text-gray-600 dark:text-gray-400 text-xs'>{date}</p>
+                    <Link href={`/posts/${id}`} className='text-teal-600 hover:underline dark:hover:text-teal-400' passHref>
+                      Read More
+                    </Link>
                   </div>
                 </div>
-                <h3 className='text-lg font-medium pt-5 pb-2 dark:text-white'>Data Visualization</h3>
-                <p className='dark:text-white'>Creating elegant visualizations suited for your reporting needs.</p>
-                <h4 className='py-2 text-teal-600' >Visualization tools I use</h4>
-                <p className='text-gray-800 py-1 dark:text-slate-400'>Python</p>
-                <p className='text-gray-800 py-1 dark:text-slate-400'>Power BI</p>
-                <p className='text-gray-800 py-1 dark:text-slate-400'>Excel </p>
-              </div>
-
-              <div className='text-center shadow-lg shadow-slate-500 p-10 my-10 pb-5 rounded-xl max-w-xl md:px-32 lg:px-30  dark:bg-slate-800 dark:shadow-none'>
-                <div className='text-center mx-auto bg-neutral-800 text-white rounded-xl'>
-                <div className='mx-auto bg-neutral-600 rounded-t-xl h-8 pt-2'>
-                <BsFillPlayFill className='scale-125 cursor-pointer ml-3 hover:text-teal-600 dark:hover:text-teal-400'></BsFillPlayFill>
-                </div>
-                
-                <ul className='text-justify text-teal-600 rounded-xl h-40 pt-5 sm:px-5 md:px-10 md:h-40 lg: px-10 dark:text-teal-600'>
-                <pre className=''>
-                  <li>1 | def HelloWorld(name=None):</li>
-                  <li>2 |    return f"Hello, &#123;name&#125;"</li>
-                  <li>3 |</li>
-                  <li>4 | HelloWorld(name='Jonah')</li>
-                </pre>
-                </ul>
-                
-                </div>
-                <h3 className='text-lg font-medium pt-5 pb-2  dark:text-white'>Programming</h3>
-                <p className='dark:text-white'>Creating efficient and effective solutions through expert programming.</p>
-                <h4 className='py-2 text-teal-600'>Programming tools I use</h4>
-                <p className='text-gray-800 py-1 dark:text-slate-400'>Python</p>
-                <p className='text-gray-800 py-1 dark:text-slate-400'>SQL</p>
-                <p className='text-gray-800 py-1 dark:text-slate-400'>Excel </p>
-              </div>
-
-              {/* <div className='text-center shadow-lg shadow-slate-500 p-10 my-10 pb-5 rounded-xl max-w-xl justify-center md:px-32 lg:px-30 dark:bg-slate-800 dark:shadow-none'>
-                <Image src={table} className='mx-auto scale-125' alt='data table icon'/>
-                <h3 className='text-lg font-medium pt-8 pb-2 dark:text-white'>Data Modeling</h3>
-
-                <p className='dark:text-white'>Creating elegant designs suited for you needs following core design theory</p>
-                <h4 className='py-4 text-teal-600'>Design tools I use</h4>
-                <p className='text-gray-800 py-1 dark:text-slate-400'>Photoshop</p>
-                <p className='text-gray-800 py-1 dark:text-slate-400'>Illustrator</p>
-                <p className='text-gray-800 py-1 dark:text-slate-400'>Figma</p>
-              </div> */}
+              ))}
+            </div>
           </div>
         </section>
+
+
 
         {/* <section>
           <div>
