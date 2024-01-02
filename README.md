@@ -59,4 +59,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - react-icons
 - tailwinds
 - tailwinds/typography
+- strip-markdown
 
