@@ -15,6 +15,7 @@ import {
 import { getSortedPostsData } from '../lib/posts.js'
 
 import deved from '../public/portrait.png'
+import { CiClock1 } from "react-icons/ci";
 import visualization from '../public/DataVisualization.png'
 import code from '../public/code_snippet.png'
 import table from '../public/icons8-table-96.png'
@@ -39,6 +40,7 @@ type Post = {
   date: string; // Assuming date is a string, you can adjust the type as needed
   title: string;
   tags: string[];
+  snippet: string;
   contentHtml: string;
   // Add other properties from the post metadata section
 }
@@ -97,7 +99,7 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
           <div className='max-w-7xl mx-auto'>
             <h3 className='text-3xl pt-2 pb-10 dark:text-white text-center'>Recent Blog Posts</h3>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-              {allPostsData.map(({ id, date, title, tags }) => (
+              {allPostsData.map(({ id, date, title, tags, snippet }) => (
                 <div key={id} className='bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden p-5'>
                   <div className='mb-2'>
                     {/* Tags go here */}
@@ -108,11 +110,15 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
                         </span>
                       ))}
                     </div>
-                    <h4 className='text-xl font-semibold mb-2 dark:text-white'>{title}</h4>
-                  
+                    <h4 className='text-2xl font-semibold mb-2 dark:text-white'>{title}</h4>
+                    <p className='text- font-semibold mb-2 dark:text-slate-400'>{snippet}</p>
+
                   </div>
                   <div className='flex items-center justify-between mt-4'>
-                    <p className='text-gray-600 dark:text-gray-400 text-xs'>{date}</p>
+                    <div className='flex items-center'>
+                      <CiClock1 className='text-xl text-white' />
+                      <p className='text-gray-600 pl-2 dark:text-gray-400 text-xl font-semibold'>{date}</p>
+                    </div>
                     <Link href={`/posts/${id}`} className='text-teal-600 hover:underline dark:hover:text-teal-400' passHref>
                       Read More
                     </Link>
@@ -148,6 +154,6 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
         </section> */}
 
       </main>
-    </div>
+    </div >
   )
 }
