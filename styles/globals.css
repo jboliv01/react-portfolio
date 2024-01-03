@@ -26,25 +26,27 @@ a {
 }
 
 @layer base {
+  /* Styles for ordered lists */
   ol {
-    list-style-type: decimal; /* Ensures that ordered lists use numbers */
+    padding-left: 20px;
+    list-style-type: decimal; /* Numbers for ordered lists */
   }
-}
 
-@layer base {
+  /* Styles for unordered lists */
   ul {
-    /* Custom styles for unordered lists */
     padding-left: 20px;
     list-style-type: disc;
-    color: white;
+    @apply bg-gray-800;
+    border-radius: 10px;;
+    padding: 10px; /* Bullets for unordered lists */
   }
 
+  /* Common styles for all list items */
   li {
-    /* Custom styles for list items */
     margin-bottom: 0.5rem;
-    color: white;
-    list-style-type: decimal;
+    @apply text-teal-400;
   }
+}
   
   @layer base {
     pre {
@@ -60,4 +62,3 @@ a {
   
   
   /* Add more customizations for other markdown elements if needed */
-}

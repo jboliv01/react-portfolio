@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
+import { gfmHeadingId  } from 'marked-gfm-heading-id';
 import Image from 'next/image';
 import { CiClock1 } from "react-icons/ci";
 import { formatDate } from '/lib/utils.js';
@@ -26,7 +27,7 @@ const Post = ({ htmlString, data }) => {
         </Link>
       </div>
     </nav>
-    <article className="prose-xl dark:prose-invert mx-auto p-10 text-white">
+    <article className="prose-base dark:prose-invert mx-auto p-10 text-white">
       <h1 className="text-5xl font-bold mb-0 text-teal-600">{data.title}</h1>
       <div className='flex items-center'>
         <CiClock1 className='text-xl text-white' />
@@ -36,7 +37,7 @@ const Post = ({ htmlString, data }) => {
         <Image src="/portrait_cropped.png" width='80' height='80' className='rounded-full'/>
         <div className="text-2xl ml-4 font-bold">{data.author.name}</div>
       </div>
-      <div className="break-words"  dangerouslySetInnerHTML={{ __html: htmlString }} />
+      <div  dangerouslySetInnerHTML={{ __html: htmlString }} />
     </article>
   </div>
 </main>
@@ -63,34 +64,33 @@ export const getStaticPaths = async () => {
   };
 };
 
+// Use the gfmHeadingId extension with marked
+
 
 export const getStaticProps = async ({ params: { id } }) => {
   // Determine the file extension
   const markdownFilePath = path.join('posts', id + '.md');
-  const htmlFilePath = path.join('posts', id + '.html');
   let fileContent, isMarkdown;
 
   // Check if the Markdown file exists
   if (fs.existsSync(markdownFilePath)) {
     fileContent = fs.readFileSync(markdownFilePath).toString();
     isMarkdown = true;
-  } else if (fs.existsSync(htmlFilePath)) {
-    // If not, check if the HTML file exists
-    fileContent = fs.readFileSync(htmlFilePath).toString();
-    isMarkdown = false;
   } else {
-    // Handle the case where neither file exists
+    // Handle the case where the file does not exist
     return {
       notFound: true,
     };
   }
 
+  
   let htmlString;
   const parsedContent = matter(fileContent);
 
   // Parse the content based on the file type
   if (isMarkdown) {
-    htmlString = marked(parsedContent.content, { headerIds: false });
+    marked.use(gfmHeadingId());
+    htmlString = marked(parsedContent.content);
   } else {
     htmlString = parsedContent.content; // The content is already HTML
   }
@@ -102,6 +102,5 @@ export const getStaticProps = async ({ params: { id } }) => {
     },
   };
 };
-
 
 export default Post;
