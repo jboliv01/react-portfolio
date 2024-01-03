@@ -13,7 +13,7 @@ import {
 } from 'react-icons/ai'
 
 import { getSortedPostsData } from '../lib/posts.js'
-import { formatDate } from '/lib/utils.js';
+import { formatDate } from '../lib/utils.js';
 
 import deved from '../public/portrait.png'
 import { CiClock1 } from "react-icons/ci";
@@ -107,7 +107,7 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
                     </div>
                     <h4 className='text-2xl font-semibold mb-2 dark:text-white'>{title}</h4>
                     <div className='flex items-center'>
-                      <CiClock1 className='text-xl text-white' />
+                      <CiClock1 className='text-xl dark:text-white' />
                       <p className='text-gray-600 pl-2 dark:text-gray-400 text-lg font-semibold'>{formatDate(date)}</p>
                     </div>
                     <p className='text-lg pt-2 font-semibold mb-2 dark:text-slate-400'>{snippet}</p>
