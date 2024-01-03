@@ -39,8 +39,11 @@ a {
     @apply bg-gray-800;
     border-radius: 10px;;
     padding: 10px; /* Bullets for unordered lists */
-  }
+   }
 
+  ul li a {
+    @apply underline; /* Underline only for anchors within list items */
+  }
   /* Common styles for all list items */
   li {
     margin-bottom: 0.5rem;
