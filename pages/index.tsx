@@ -13,16 +13,10 @@ import {
 } from 'react-icons/ai'
 
 import { getSortedPostsData } from '../lib/posts.js'
+import { formatDate } from '/lib/utils.js';
 
 import deved from '../public/portrait.png'
 import { CiClock1 } from "react-icons/ci";
-import visualization from '../public/DataVisualization.png'
-import code from '../public/code_snippet.png'
-import table from '../public/icons8-table-96.png'
-import consulting from '../public/consulting.png'
-import web1 from '../public/web1.png'
-import web2 from '../public/web2.png'
-import web3 from '../public/web3.png'
 
 
 export async function getStaticProps() {
@@ -60,16 +54,16 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
         <section className='max-w-7xl mx-auto'>
           <nav className='py-10 mb-1 flex flex-row sm:flex md:flex lg:flex justify-between phone:hidden'>
             <h1 className='text-xl font-burtons text-slate-600 dark:text-slate-400 mb-4 sm:mb-0 phone:text-center'>developedbyjonah</h1>
-            <ul className='flex flex-col sm:flex-row items-center'>
-              <li className='mb-4 sm:mb-0'>
+            <div className='flex flex-col sm:flex-row items-center'>
+              <div className='mb-4 sm:mb-0'>
                 <BsFillMoonStarsFill onClick={() => setDarkMode(!darkMode)} className='text-xl cursor-pointer text-3xl mr-3 dark:text-teal-600 dark:hover:text-slate-400'>
                   {/* Moon/Stars Icon */}
                 </BsFillMoonStarsFill>
-              </li>
-              <li className='text-xl px-4 py-2 text-white bg-gradient-to-b from-cyan-500 to-cyan-600 rounded-md dark:from-teal-600 dark:to-teal-700 dark:hover:from-slate-400 dark:hover:to-slate-500'>
+              </div>
+              <div className='text-xl px-4 py-2 text-white bg-gradient-to-b from-cyan-500 to-cyan-600 rounded-md dark:from-teal-600 dark:to-teal-700 dark:hover:from-slate-400 dark:hover:to-slate-500'>
                 <a target="_blank" rel="noopener noreferrer" href="https://1drv.ms/b/s!AvaHb03-LlJmi3MGBJEK2gwC6-ji?e=aJjZzI">Resume</a>
-              </li>
-            </ul>
+              </div>
+            </div>
           </nav>
         </section>
         <section className='rounded-2xl flex flex-col md:flex-row 
@@ -112,14 +106,15 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
                       ))}
                     </div>
                     <h4 className='text-2xl font-semibold mb-2 dark:text-white'>{title}</h4>
-                    <p className='text- font-semibold mb-2 dark:text-slate-400'>{snippet}</p>
+                    <div className='flex items-center'>
+                      <CiClock1 className='text-xl text-white' />
+                      <p className='text-gray-600 pl-2 dark:text-gray-400 text-lg font-semibold'>{formatDate(date)}</p>
+                    </div>
+                    <p className='text-lg pt-2 font-semibold mb-2 dark:text-slate-400'>{snippet}</p>
 
                   </div>
                   <div className='flex items-center justify-between mt-4'>
-                    <div className='flex items-center'>
-                      <CiClock1 className='text-xl text-white' />
-                      <p className='text-gray-600 pl-2 dark:text-gray-400 text-xl font-semibold'>{date}</p>
-                    </div>
+                    
                     <Link href={`/posts/${id}`} className='text-teal-600 hover:underline dark:hover:text-teal-400' passHref>
                       Read More
                     </Link>
