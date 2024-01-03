@@ -58,7 +58,7 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
 
       <main className='bg-white px-10 md:px-20 lg:px-40 dark:bg-gray-900'>
         <section className='max-w-7xl mx-auto'>
-          <nav className='py-10 mb-1 flex flex-col sm:flex-row justify-between phone:hidden'>
+          <nav className='py-10 mb-1 flex flex-col sm:flex-row justify-between lg:flex md:flex sm:flex phone:hidden'>
             <h1 className='text-xl font-burtons text-slate-600 dark:text-slate-400 mb-4 sm:mb-0 phone:text-center'>developedbyjonah</h1>
             <ul className='flex flex-col sm:flex-row items-center'>
               <li className='mb-4 sm:mb-0'>
