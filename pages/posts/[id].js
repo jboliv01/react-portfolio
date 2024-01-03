@@ -13,9 +13,9 @@ const Post = ({ htmlString, data }) => {
   }
 
   return (
-    <main className='bg-gray-900'>
+    <main>
     <div>
-    <nav className="bg-gray-900 px-10 pt-10 shadow-md">
+    <nav className="px-10 pt-10 shadow-md mx-auto">
         <div className="container justify-left max-w-screen-phone text-white rounded-md p-2 bg-gradient-to-b from-teal-600 to-teal-700 hover:from-slate-400 hover:to-slate-500 ">
           <Link href="/" className="text-xl font-semibold rounded-xl px-4 py-2">
             ← Back to Home
