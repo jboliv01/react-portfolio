@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+<img src="/public/portrait.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
+
 ## Getting Started
 
 Before getting started, make sure you have Node.js and npm (or yarn) installed on your machine.

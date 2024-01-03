@@ -24,3 +24,40 @@ a {
   font-family: 'burtons';
   src: url('../public/Burtons.otf');
 }
+
+@layer base {
+  ol {
+    list-style-type: decimal; /* Ensures that ordered lists use numbers */
+  }
+}
+
+@layer base {
+  ul {
+    /* Custom styles for unordered lists */
+    padding-left: 20px;
+    list-style-type: disc;
+    color: white;
+  }
+
+  li {
+    /* Custom styles for list items */
+    margin-bottom: 0.5rem;
+    color: white;
+    list-style-type: decimal;
+  }
+  
+  @layer base {
+    pre {
+      @apply bg-gray-800 text-white p-4;
+    }
+  
+    code {
+      @apply bg-gray-700; /* Slightly different background for inline code */
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+  }
+  
+  
+  /* Add more customizations for other markdown elements if needed */
+}
