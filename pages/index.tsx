@@ -93,10 +93,10 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
         <section className='py-10'>
           <div className='max-w-7xl mx-auto'>
             <h3 className='text-3xl pt-2 pb-10 dark:text-white text-center text-bold'>Recent Blog Posts</h3>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
               {allPostsData.map(({ id, date, title, tags, snippet }) => (
                 <div key={id} className=' rounded-lg overflow-hidden p-5'>
-                  <div className='mb-2'>
+                  <div className='mb-2 h-72'>
                     {/* Tags go here */}
                     <div className='flex flex-wrap gap-2 mb-4'>
                       {tags.map((tag) => (
@@ -104,17 +104,19 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
                           {tag}
                         </span>
                       ))}
+                    {/* Title */}
                     </div>
-                    <h4 className='text-2xl font-semibold mb-2 dark:text-white'>{title}</h4>
+                    <h4 className='text-2xl font-semibold mb-4 dark:text-white'>{title}</h4>
+                    {/* Date */}
                     <div className='flex items-center'>
                       <CiClock1 className='text-xl dark:text-white' />
                       <p className='text-gray-600 pl-2 dark:text-gray-400 text-lg font-semibold'>{formatDate(date)}</p>
                     </div>
+                    {/* Snippet */}
                     <p className='text-lg pt-2 font-semibold mb-2 dark:text-slate-400'>{snippet}</p>
-
                   </div>
+                  
                   <div className='flex items-center justify-between mt-4'>
-                    
                     <Link href={`/posts/${id}`} className='text-teal-600 hover:underline dark:hover:text-teal-400' passHref>
                       Read More
                     </Link>

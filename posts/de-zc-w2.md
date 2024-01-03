@@ -1,7 +1,7 @@
 ---
 id: de-zc-w2
 title: 'Data Engineering Zoomcamp, Week 2'
-tags: ["tag1", "tag2"]
+tags: ["Mage", "Orchestration"]
 date: '2023-01-02'
 author:
   name: 'Jonah Oliver'

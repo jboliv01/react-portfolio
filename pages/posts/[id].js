@@ -27,7 +27,7 @@ const Post = ({ htmlString, data }) => {
       </div>
     </nav>
     <article className="prose-xl dark:prose-invert mx-auto p-10 text-white">
-      <h1 className="text-5xl font-bold mb-0">{data.title}</h1>
+      <h1 className="text-5xl font-bold mb-0 text-teal-600">{data.title}</h1>
       <div className='flex items-center'>
         <CiClock1 className='text-xl text-white' />
         <p className='pl-2 text-gray-100 text-xl font-sans'>{formatDate(data.date)}</p>
@@ -36,7 +36,7 @@ const Post = ({ htmlString, data }) => {
         <Image src="/portrait_cropped.png" width='80' height='80' className='rounded-full'/>
         <div className="text-2xl ml-4 font-bold">{data.author.name}</div>
       </div>
-      <div dangerouslySetInnerHTML={{ __html: htmlString }} />
+      <div className="break-words"  dangerouslySetInnerHTML={{ __html: htmlString }} />
     </article>
   </div>
 </main>

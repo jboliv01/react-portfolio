@@ -53,6 +53,8 @@ a {
   
     code {
       @apply bg-gray-700; /* Slightly different background for inline code */
+      word-wrap: break-word;
+      white-space: pre-wrap;
     }
   }
   
