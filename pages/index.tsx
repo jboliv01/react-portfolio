@@ -57,28 +57,28 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
       </Head>
 
       <main className='bg-white px-10 md:px-20 lg:px-40 dark:bg-gray-900'>
-        <section className=' max-w-7xl mx-auto'>
-          <nav className='py-10 mb-1 flex justify-between'>
-            <h1 className='text-xl font-burtons text-slate-600 dark:text-slate-400'>developedbyjonah</h1>
-            <ul className='flex items-center'>
-              <li>
+        <section className='max-w-7xl mx-auto'>
+          <nav className='py-10 mb-1 flex flex-col sm:flex-row justify-between phone:hidden'>
+            <h1 className='text-xl font-burtons text-slate-600 dark:text-slate-400 mb-4 sm:mb-0 phone:text-center'>developedbyjonah</h1>
+            <ul className='flex flex-col sm:flex-row items-center'>
+              <li className='mb-4 sm:mb-0'>
                 <BsFillMoonStarsFill onClick={() => setDarkMode(!darkMode)} className='text-xl cursor-pointer text-3xl mr-3 dark:text-teal-600 dark:hover:text-slate-400'>
-
+                  {/* Moon/Stars Icon */}
                 </BsFillMoonStarsFill>
               </li>
-              <li className='text-xl px-4 py-2 text-white bg-gradient-to-b bg-cyan-500 rounded-md dark:bg-teal-600 dark:hover:bg-slate-400 text-white'>
+              <li className='text-xl px-4 py-2 text-white bg-gradient-to-b from-cyan-500 to-cyan-600 rounded-md dark:from-teal-600 dark:to-teal-700 dark:hover:from-slate-400 dark:hover:to-slate-500'>
                 <a target="_blank" rel="noopener noreferrer" href="https://1drv.ms/b/s!AvaHb03-LlJmi3MGBJEK2gwC6-ji?e=aJjZzI">Resume</a>
               </li>
             </ul>
           </nav>
         </section>
-        <section className='bg-slate-200 dark:bg-slate-800 rounded-2xl flex flex-col md:flex-row 
-        justify-center items-center text-center md:text-left max-w-7xl mx-auto py-5 '>
+        <section className='rounded-2xl flex flex-col md:flex-row 
+        justify-center items-center text-center md:text-left max-w-7xl mx-auto py-5'>
           <div className='flex flex-col pt-5 md:flex-row md:px-10 sm:px-5 items-center md:items-start text-center md:text-left'>
-            <div className='md:flex-grow '>
-              <h2 className='text-5xl py-2 text-teal-600 font-bold md:text-6xl'>Jonah Oliver</h2>
-              <h3 className='text-2xl py-2 text-teal-500 md:text-3xl dark:text-white'>Data Analyst and Programmer</h3>
-              <p className='text-med py-5 leading-8 text-gray-600 md:text-xl max-w-lg  dark:text-slate-400'>
+            <div className='md:flex-grow phone:max-w-sm'>
+              <h2 className='text-5xl py-2 text-teal-600 font-bold md:text-6xl '>Jonah Oliver</h2>
+              <h3 className='text-2xl py-2 text-teal-500 md:text-3xl dark:text-white phone:text-base'>Data Analyst and Programmer</h3>
+              <p className='text-med py-5 leading-8 text-gray-600 md:text-xl max-w-lg  dark:text-slate-400  phone:flex-shrink'>
                 Skilled professional offering data-driven solutions to unlock the potential of your data.
               </p>
               <div className='text-5xl flex justify-center md:justify-start gap-16 py-3 text-gray-700'>
@@ -88,7 +88,8 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
                 <AiFillTwitterCircle />
               </div>
             </div>
-            <div className='relative mx-auto rounded-full w-80 h-80 mb-10 overflow-auto scale-100 hover:scale-125 ease-in duration-500 mt-10 md:mt-0 md:ml-10'>
+            <div className='relative mx-auto rounded-full mb-10 overflow-auto scale-100 hover:scale-125 ease-in duration-500 mt-10 md:mt-0 md:ml-10
+            phone:h-60 phone:w-60 lg:w-80 lg:h-80 md:w-80 md:h-80'>
               <Image src={deved} layout='fill' objectFit='cover' alt='Jonah Oliver' />
             </div>
           </div>
@@ -97,10 +98,10 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
         {/* blog posts */}
         <section className='py-10'>
           <div className='max-w-7xl mx-auto'>
-            <h3 className='text-3xl pt-2 pb-10 dark:text-white text-center'>Recent Blog Posts</h3>
+            <h3 className='text-3xl pt-2 pb-10 dark:text-white text-center text-bold'>Recent Blog Posts</h3>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
               {allPostsData.map(({ id, date, title, tags, snippet }) => (
-                <div key={id} className='bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden p-5'>
+                <div key={id} className=' rounded-lg overflow-hidden p-5'>
                   <div className='mb-2'>
                     {/* Tags go here */}
                     <div className='flex flex-wrap gap-2 mb-4'>
