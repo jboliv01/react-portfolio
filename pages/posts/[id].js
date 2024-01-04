@@ -29,14 +29,20 @@ const Post = ({ htmlString, data }) => {
     </nav>
     <article className="prose-base dark:prose-invert mx-auto p-10 text-white">
       <h1 className="text-5xl font-bold mb-0 text-teal-600">{data.title}</h1>
-      <div className='flex items-center'>
-        <CiClock1 className='text-xl text-white' />
-        <p className='pl-2 text-gray-100 text-xl font-sans'>{formatDate(data.date)}</p>
-      </div>
-      <div className='flex items-center'>
+      <div className='flex items-center mx-auto'>
         <Image src="/portrait_cropped.png" width='80' height='80' className='rounded-full'/>
         <div className="text-2xl ml-4 font-bold">{data.author.name}</div>
       </div>
+      <div className=''>
+      <div className='flex items-center mb-5'>
+        <CiClock1 className='text-xl text-white' />
+        <div className='pl-2 text-gray-400 text-xl font-sans'>{formatDate(data.date)}</div>
+      </div>
+      <div className="text-xl font-bold mb-5 text-gray-400">{data.readtime}</div>
+      </div>
+      
+      
+      
       <div  dangerouslySetInnerHTML={{ __html: htmlString }} />
     </article>
   </div>

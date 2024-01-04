@@ -6,6 +6,7 @@ date: '2023-01-02'
 author:
   name: 'Jonah Oliver'
   picture: '/public/portrait.png'
+readtime: '30 min read'
 --- 
 
 # Data Engineering Zoomcamp Introduction
