@@ -11,7 +11,7 @@ readtime: '30 min read'
 
 # Data Engineering Zoomcamp Introduction
 
-The first week of the DataTalksClub Data Engineering Zoomcamp content revolves around the New York Taxi dataset. This dataset is a fact table containing details regarding taxi trips such as trip length, trip amount, pickup and drop off locations, etc. Our goal is to set up an environment that allows us to ingest and store this data so that it can be later leveraged for analysis.
+The first week of the DataTalksClub Data Engineering Zoomcamp content revolves around the New York Taxi dataset. This dataset is a fact table containing details about taxi trips such as trip length, trip amount, pickup and drop off locations, pickup and drop off dates, etc. Our goal is to set up an environment that allows us to ingest and store this data so that it can be later leveraged for analysis.
 
 
 - [Data Engineering Zoomcamp Introduction](#data-engineering-zoomcamp-introduction)
@@ -32,6 +32,8 @@ If you're interested in the Zoomcamp, you can register [here](https://lu.ma/1u1j
 
 # Pre-requisites
 
+You will need to install the following files and tools before we get started.
+
 - [New York Taxi Data (green_tripdata_2019-09)](https://github.com/DataTalksClub/nyc-tlc-data/releases/tag/green)
 - [New York Taxi Zone Data](https://github.com/DataTalksClub/nyc-tlc-data/releases/tag/misc)
 - [Python](https://www.python.org/downloads/)
@@ -41,14 +43,14 @@ If you're interested in the Zoomcamp, you can register [here](https://lu.ma/1u1j
 
 ### Setup on Windows: Additional Tools Required
 
-***The recommendation is to set up a virtual linux remote environment to follow along with the Zoomcamp, but I opted instead to use my personal windows machine. If you choose to do this, it will require you to install some additional tools in order to complete the module:***
+***The recommendation is to set up a virtual remote environment to follow along with the Zoomcamp, but I opted instead to use my personal Windows 11 machine. If you choose to do this, it will require you to install some additional tools in order to complete the module:***
 
 - [MinGW-w64](https://www.mingw-w64.org/)
   - A bash shell for Windows, bundled with Git, providing a Unix-style command-line interface for executing Git commands and scripts.
 - winpty
   - A compatibility interface used in Windows to enable Unix-like console applications to interact correctly with the Windows console.
   
-When prefixed to a Docker command in Git Bash, `winpty` ensures proper handling of the terminal I/O, making it possible to interact with Docker containers as intended. The necessity of the command may vay, but if you are having issues running a docker command in the Git Bash terminal, try prefixing it with `winpty`.
+MinGW includes the Git Bash terminal, which will be running the majority of our commands on. When prefixed to a Docker command in Git Bash, `winpty` ensures proper handling of the terminal I/O, making it possible to interact with Docker containers as intended. The necessity of the command may vary, but if you are having issues running a docker command in the Git Bash terminal, try prefixing it with `winpty`.
 
 # Docker Services Configuration
 
@@ -85,13 +87,13 @@ Docker Compose is a tool for defining and running multi-container Docker applica
       - "8080:80"
   ```
 
-The result of running `docker compose up` after configuring your docker-compose.yml file should be something like the following. Two container's, one configured with PostgreSQL and the other with pgAdmin that are able to communicate.
+The result of running `docker compose up` after configuring your docker-compose.yml file should be something like the following. Two containers, one configured with PostgreSQL and the other with pgAdmin that are now able to communicate.
 
 ![docker compose](/de-zc/w1/docker-compose.png)
 
 ## Docker Network Considerations
 
-It is important to note we did not define a Network in our `docker-compose.yml` file (Networks allow our services to communicate). Therefore docker-compose by default will create one for you which name is derived from the folder/directory the docker-compose.yml file is located in. You can run the command `docker network ls` and it will list all the networks, your default one included. For example, my docker-compose file was in my directory titled `my_week_1`, therefore the network is titled `my_week_1_default`. Try running `docker network ls` and see for yourself. You can also define the network name within docker compose as well if you'd prefer.
+It is important to note we did not define a Network in our `docker-compose.yml` file (Networks allow our services to communicate). Therefore Docker Compose by default will create one for you which name is derived from the folder/directory the docker-compose.yml file is located in. You can run the command `docker network ls` and it will list all the networks, your default one included. For example, my docker-compose file was in my directory titled `my_week_1`, therefore the network is titled `my_week_1_default`. Try running `docker network ls` and see for yourself. You can also define the network name within docker compose as well if you'd prefer.
 
 ## PostgreSQL Data Persistence
 
@@ -130,7 +132,7 @@ In you're terminal where you last ran `docker compose up` use the `CTRL + C` to 
 
 # Building a Python Ingestion Script
 
-There are a few key components that our python script consists of. We utilize the `pandas` library to read our CSV file. We use `sqlaclehmy` to instantiate a sql engine that allows us to insert our data into our postgreSQL database. The `argparse` library allows us to pass parameters such as the url of our CSV file, our database name, our database credentials, etc. into our script via the Git Bash terminal. I'll demonstrate further in the next section. Lastly, we use a for loop to step through our taxi dataframe and insert that data into our database. You may ask why we are using a for loop rather than just inserting all the data at once. The answer is we are utilizing a concept known as chunk sizing, which breaks a large dataframe into smaller pieces. I.e. say we have a dataframe with 1,000,000 records. With chunk sizing, we split that dataframe into 10 pieces, 100,000 records each and insert them sequentially with a for loop. This is better for memory management and is often more effecient. 
+Before we get into the actual code, I'd like to break down some of the libraries we are using. We utilize the `pandas` library to read our CSV file as well as to insert our data into our database. `sqlaclehmy` is used to instantiate a sql engine that allows us to connect to our database, prior to performing the insert. The `argparse` library allows us to pass parameters such as the URL of our CSV file, our database name, our database credentials, etc. into our script via the Git Bash terminal. I'll demonstrate further in the next section. Lastly, we use a for loop to step through our taxi dataframe and insert that data into our database. You may ask why we are using a for loop rather than just inserting all the data at once. The answer is we are utilizing a concept known as "chunk sizing", which breaks a large dataframe into multiple smaller pieces. i.e. say we have a dataframe with 1,000,000 records. With chunk sizing, we split that dataframe into 10 pieces, 100,000 records each and insert them sequentially using a for loop. This is better for memory management and is often more effecient. 
 
 ```
 import argparse
@@ -206,7 +208,7 @@ if __name__ == '__main__':
 
 # Ingesting New York Taxi Fact data & Taxi Zone Dimension data into a PostgreSQL Database with Python
 
-Now that we have written our ingestion script, the next step is to configure our docker file before we can actually run the script and ingest our data into our database. In the Dockerfile below, we  Let's define our docker file below: 
+Now that we have written our ingestion script, the next step is to configure our docker file before we can actually run the script and ingest our data into our database. In the Dockerfile below, let's define our docker file below: 
 
 ```
 FROM python:3.9.1
