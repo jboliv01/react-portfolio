@@ -23,7 +23,7 @@ const Post = ({ htmlString, data }) => {
       <Head>
         <title>{data.title}</title>
         <meta name="description" content={data.description} />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/code.png" />
       </Head>
       <main className='mx-auto max-w-7xl'>
         <div>
