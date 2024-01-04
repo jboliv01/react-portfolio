@@ -21,7 +21,6 @@ The first week of the DataTalksClub Data Engineering Zoomcamp content revolves a
 - [Docker Services Configuration](#docker-services-configuration)
     - [Docker Compose Setup for pgAdmin and PostgreSQL](#docker-compose-setup-for-pgadmin-and-postgresql)
   - [Docker Network Considerations](#docker-network-considerations)
-  - [PostgreSQL Data Persistence](#postgresql-data-persistence)
   - [Understanding Docker Volumes](#understanding-docker-volumes)
 - [Building a Python Ingestion Script](#building-a-python-ingestion-script)
 - [Ingesting New York Taxi data into a PostgreSQL Database](#ingesting-new-york-taxi-data-into-a-postgresql-database)
@@ -95,11 +94,9 @@ The result of running `docker compose up` after configuring your docker-compose.
 
 It is important to note we did not define a Network in our `docker-compose.yml` file (Networks allow our services to communicate). Therefore Docker Compose by default will create one for you which name is derived from the folder/directory the docker-compose.yml file is located in. You can run the command `docker network ls` and it will list all the networks, your default one included. For example, my docker-compose file was in my directory titled `my_week_1`, therefore the network is titled `my_week_1_default`. Try running `docker network ls` and see for yourself. You can also define the network name within docker compose as well if you'd prefer.
 
-## PostgreSQL Data Persistence
+## Understanding Docker Volumes
 
 In order to keep our newly ingested data persisitent across container runs, it is important that we map the volume in our docker compose file.
-
-## Understanding Docker Volumes
 
 `pgadmin_data` is the name I gave to our specific volume, you can name it however you'd like. pgAdmin writes various types of data to this directory. This data includes:
 
