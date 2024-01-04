@@ -24,7 +24,7 @@ The first week of the DataTalksClub Data Engineering Zoomcamp content revolves a
   - [PostgreSQL Data Persistence](#postgresql-data-persistence)
   - [Understanding Docker Volumes](#understanding-docker-volumes)
 - [Building a Python Ingestion Script](#building-a-python-ingestion-script)
-- [Ingesting New York Taxi Fact data \& Taxi Zone Dimension data into a PostgreSQL Database with Python](#ingesting-new-york-taxi-fact-data--taxi-zone-dimension-data-into-a-postgresql-database-with-python)
+- [Ingesting New York Taxi data into a PostgreSQL Database](#ingesting-new-york-taxi-data-into-a-postgresql-database)
 
 ### Registration Link for Zoomcamp
 
@@ -206,7 +206,7 @@ if __name__ == '__main__':
     main(args)
 ```
 
-# Ingesting New York Taxi Fact data & Taxi Zone Dimension data into a PostgreSQL Database with Python
+# Ingesting New York Taxi data into a PostgreSQL Database
 
 Now that we have written our ingestion script, the next step is to configure our docker file before we can actually run the script and ingest our data into our database. In the Dockerfile below, let's define our docker file below: 
 
