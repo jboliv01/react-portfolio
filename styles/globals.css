@@ -38,7 +38,8 @@ a {
     list-style-type: disc;
     @apply bg-gray-800;
     border-radius: 10px;;
-    padding: 10px; /* Bullets for unordered lists */
+    padding-top: 1px;
+    padding-bottom: 1px; /* Bullets for unordered lists */
    }
 
   ul li a {
@@ -48,6 +49,7 @@ a {
   li {
     margin-bottom: 0.5rem;
     @apply text-teal-400;
+    
   }
 }
   
@@ -63,5 +65,18 @@ a {
     }
   }
   
-  
+  @layer base {
+    h3 {
+      @apply underline;
+    }
+    h2 {
+      @apply underline;
+    }
+    h1 {
+      @apply font-bold;
+    }
+    p {
+      @apply text-gray-300;
+    }
+  }
   /* Add more customizations for other markdown elements if needed */
