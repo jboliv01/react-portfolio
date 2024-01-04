@@ -45,12 +45,11 @@ You will need to install the following files and tools before we get started.
 
 ***The recommendation is to set up a virtual remote environment to follow along with the Zoomcamp, but I opted instead to use my personal Windows 11 machine. If you choose to do this, it will require you to install some additional tools in order to complete the module:***
 
-- [MinGW-w64](https://www.mingw-w64.org/)
-  - A bash shell for Windows, bundled with Git, providing a Unix-style command-line interface for executing Git commands and scripts.
-- winpty
-  - A compatibility interface used in Windows to enable Unix-like console applications to interact correctly with the Windows console.
-  
-MinGW includes the Git Bash terminal, which will be running the majority of our commands on. When prefixed to a Docker command in Git Bash, `winpty` ensures proper handling of the terminal I/O, making it possible to interact with Docker containers as intended. The necessity of the command may vary, but if you are having issues running a docker command in the Git Bash terminal, try prefixing it with `winpty`.
+- [Git for Windows](https://gitforwindows.org/)
+
+Git for Windows includes Git Bash which we will be running the majority of our commands on.
+
+***Important:*** For certain Docker commands, you will need to prefix the command in Git Bash with `winpty`, which ensures proper handling of the terminal I/O, making it possible to interact with Docker containers as intended. The necessity of the command may vary, but if you are having issues running a docker command in the Git Bash terminal, try prefixing it with `winpty`.
 
 # Docker Services Configuration
 
