@@ -28,7 +28,7 @@ The first week of the DataTalksClub Data Engineering Zoomcamp content revolves a
 
 ### Registration Link for Zoomcamp
 
-If you're interested in the Zoomcamp, you can register [here](https://lu.ma/1u1jlz4x) and it's free to participate!
+If you're interested in the Zoomcamp, you can register [here](https://airtable.com/appzbS8Pkg9PL254a/shr6oVXeQvSI5HuWD) and it's free to participate!
 
 # Pre-requisites
 
