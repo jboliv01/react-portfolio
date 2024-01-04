@@ -38,14 +38,15 @@ You will need to install the following files and tools before we get started.
 - [New York Taxi Zone Data](https://github.com/DataTalksClub/nyc-tlc-data/releases/tag/misc)
 - [Python](https://www.python.org/downloads/)
 - [Docker](https://docs.docker.com/engine/install/)
-  - [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
-    -  In order to install Docker on windows you will need to install Windows Subsystem for Linux (WSL) and enable Hyper V in the Windows Features
+
 
 ### Setup on Windows: Additional Tools Required
 
 ***The recommendation is to set up a virtual remote environment to follow along with the Zoomcamp, but I opted instead to use my personal Windows 11 machine. If you choose to do this, it will require you to install some additional tools in order to complete the module:***
 
 - [Git for Windows](https://gitforwindows.org/)
+- [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+  -  In order to install Docker on windows you will need to install Windows Subsystem for Linux (WSL) and enable Hyper V in the Windows Features
 
 Git for Windows includes Git Bash which we will be running the majority of our commands on.
 
