@@ -75,8 +75,8 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
         justify-center items-center text-center md:text-left max-w-7xl mx-auto py-5'>
           <div className='flex flex-col pt-5 md:flex-row md:px-10 sm:px-5 items-center md:items-start text-center md:text-left'>
             <div className='md:flex-grow phone:max-w-4xl'>
-              <h2 className='text-5xl py-2 text-teal-600 font-bold md:text-6xl '>Jonah Oliver</h2>
-              <h3 className='text-2xl py-2 text-teal-500 md:text-3xl dark:text-white phone:text-base'>Data Analyst and Programmer</h3>
+              <h1 className='text-5xl py-2 text-teal-600 font-bold md:text-6xl '>Jonah Oliver</h1>
+              <h1 className='text-2xl py-2 text-teal-500 md:text-3xl dark:text-white phone:text-base'>Data Analyst and Programmer</h1>
               <p className='text-med py-5 leading-8 text-gray-600 md:text-xl max-w-lg  dark:text-slate-400  phone:flex-shrink'>
                 Skilled professional offering data-driven solutions to unlock the potential of your data.
               </p>
