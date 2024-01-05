@@ -98,10 +98,10 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
         <section className='py-10'>
           <div className='max-w-7xl mx-auto'>
             <h3 className='text-3xl pt-2 pb-10 dark:text-white text-center text-bold'>Recent Blog Posts</h3>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10'>
               {allPostsData.map(({ id, date, title, tags, snippet }) => (
-                <div key={id} className=' rounded-lg overflow-hidden p-5'>
-                  <div className='mb-2 h-72'>
+                <div key={id} className=' rounded-lg overflow-visible p-5'>
+                  <div className='xl:h-80 lg:h-80 md:h-80 sm:h-80 phone:h-80'>
                     {/* Tags go here */}
                     <div className='flex flex-wrap gap-2 mb-4'>
                       {tags.map((tag) => (
@@ -118,14 +118,15 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
                       <p className='text-gray-600 pl-2 dark:text-gray-400 text-lg font-semibold'>{formatDate(date)}</p>
                     </div>
                     {/* Snippet */}
-                    <p className='text-lg pt-2 font-semibold mb-2 mt-4 text-slate-600 dark:text-slate-400'>{snippet}</p>
-                  </div>
-                  
-                  <div className='flex items-center justify-between mt-4'>
-                    <Link href={`/posts/${id}`} className='text-teal-600 phone:mt-10 hover:underline dark:hover:text-teal-400' passHref>
+                    <p className='text-lg pt-2 font-semibold mt-4 mb-5 text-slate-600 dark:text-slate-400'>{snippet}</p>
+                    <div className='flex items-center justify-between '>
+                    <Link href={`/posts/${id}`} className='text-teal-600 hover:underline dark:hover:text-teal-400' passHref>
                       Read More
                     </Link>
                   </div>
+                  </div>
+                  
+                  
                 </div>
               ))}
             </div>
