@@ -12,7 +12,7 @@ readtime: '30 min read'
 
 # Data Engineering Zoomcamp Introduction
 
-The first week of the DataTalksClub Data Engineering Zoomcamp content revolves around the New York Taxi dataset. This dataset is a fact table containing details about taxi trips such as trip length, trip amount, pickup and drop off locations, pickup and drop off dates, etc. Our goal is to set up an environment that allows us to ingest and store this data so that it can be later leveraged for analysis.
+The first week of the DataTalksClub Data Engineering Zoomcamp's content revolves around the New York Taxi dataset. This dataset is a fact table containing details about taxi trips, such as trip length, amount, pickup and dropoff locations, dates, etc. Our goal is to set up an environment that allows us to ingest and store this data for later analysis.
 
 
 - [Data Engineering Zoomcamp Introduction](#data-engineering-zoomcamp-introduction)
@@ -28,7 +28,7 @@ The first week of the DataTalksClub Data Engineering Zoomcamp content revolves a
 
 ### Registration Link for Zoomcamp
 
-If you're interested in the Zoomcamp, you can register [here](https://airtable.com/appzbS8Pkg9PL254a/shr6oVXeQvSI5HuWD) and it's free to participate!
+If you're interested in the Zoomcamp, you can register [here](https://airtable.com/appzbS8Pkg9PL254a/shr6oVXeQvSI5HuWD), and it's free to participate!
 
 # Pre-requisites
 
@@ -48,22 +48,22 @@ You will need to install the following files and tools before we get started.
 - [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
   -  In order to install Docker on windows you will need to install Windows Subsystem for Linux (WSL) and enable Hyper V in the Windows Features
 
-Git for Windows includes Git Bash which we will be running the majority of our commands on.
+Git for Windows includes Git Bash, which we will be running the majority of our commands on.
 
 ***Important:*** For certain Docker commands, you will need to prefix the command in Git Bash with `winpty`, which ensures proper handling of the terminal I/O, making it possible to interact with Docker containers as intended. The necessity of the command may vary, but if you are having issues running a docker command in the Git Bash terminal, try prefixing it with `winpty`.
 
 # Docker Services Configuration
 
-Prior to ingesting our data into a PostgreSQL database, we need to configure and start an instance of both pgAdmin (database explorer) and PostgreSQL. We have two goals:
+Before ingesting our data into a PostgreSQL database, we need to configure and start instances of both pgAdmin (database explorer) and PostgreSQL. We have two goals:
 
 1. Setup a docker network so our application services can communicate
 2. Enable our newly ingested data to be persistent across container runs (in other words, our data does not get deleted after exiting our container)
 
-In the Zoomcamp, we start by running each service independently with multiple commands. I am skipping ahead here and using docker-compose to set up both with a single command as it is more effecient. 
+In the Zoomcamp, we start by running each service independently with multiple docker commands. I am skipping ahead here and using docker-compose to set up both with a single command, as it is more effecient. 
 
 ### Docker Compose Setup for pgAdmin and PostgreSQL
 
-Docker Compose is a tool for defining and running multi-container Docker applications, using a YAML file to configure application services, streamlining the deployment and networking of interconnected containers. The contents of your docker-compose.yml should look as follows:
+Docker Compose is a tool for defining and running multi-container Docker applications. It uses a YAML file to configure application services, streamlining the deployment and networking of interconnected containers. The contents of your `docker-compose.yml` should look as follows:
 
 ```services:
   pgdatabase:
@@ -87,19 +87,19 @@ Docker Compose is a tool for defining and running multi-container Docker applica
       - "8080:80"
   ```
 
-The result of running `docker compose up` after configuring your docker-compose.yml file should be something like the following. Two containers, one configured with PostgreSQL and the other with pgAdmin that are now able to communicate.
+Running `docker compose up` after configuring your docker-compose.yml file should result in two containers, one with PostgreSQL and the other with pgAdmin, that are now able to communicate. For example, you should now be able to query your database via the pgAdmin gui.
 
 ![docker compose](/de-zc/w1/docker-compose.png)
 
 ## Docker Network Considerations
 
-It is important to note we did not define a Network in our `docker-compose.yml` file (Networks allow our services to communicate). Therefore Docker Compose by default will create one for you which name is derived from the folder/directory the docker-compose.yml file is located in. You can run the command `docker network ls` and it will list all the networks, your default one included. For example, my docker-compose file was in my directory titled `my_week_1`, therefore the network is titled `my_week_1_default`. Try running `docker network ls` and see for yourself. You can also define the network name within docker compose as well if you'd prefer.
+It is important to note we did not define a Network in our `docker-compose.yml` file. Docker Networks allow our services to communicate. Therefore, Docker Compose by default will create one for you which name is derived from the folder/directory the docker-compose.yml file is located in. You can run the command `docker network ls` and it will list all the networks, including your default one. For example, my docker-compose file was in my directory titled `my_week_1`, therefore the network is titled `my_week_1_default`. Try running `docker network ls` and see for yourself. You can also define the network name within docker compose as well if you'd prefer.
 
 ## Understanding Docker Volumes
 
-In order to keep our newly ingested data persisitent across container runs, it is important that we map the volume in our docker compose file.
+To keep our newly ingested data persisitent across container runs, it is important that we map the volume in our docker compose file.
 
-`pgadmin_data` is the name I gave to our specific volume, you can name it however you'd like. pgAdmin writes various types of data to this directory. This data includes:
+`pgadmin_data` is the name I gave to our specific volume. You can name it however you'd like. pgAdmin writes various types of data to this directory. This data includes:
 
 - Session Data: Information about user sessions, such as login sessions.
 - Configuration Data: User preferences and settings for the PgAdmin application.
@@ -109,12 +109,12 @@ This allows data such as server, database, and user details to be remembered and
 
 The pgadmin_data volume is separate from your PostgreSQL volume `ny_taxi_postgres_data`. The PostgreSQL volume is used to persist data from your PostgreSQL database, while the `pgadmin_data` volume is used to persist data from your pgAdmin application.
 
-Now lets start up our services by running:
+Now, lets start up our services by running:
 
 `docker compose up`
 
-Next you'll open up your web browser and go to `localhost:8080/` and use the credentials we 
-defined in our docker-compose.yml file to login.
+Next, you'll open up your web browser and go to `localhost:8080/` and use the credentials we 
+defined in our docker-compose.yml file to login. Remember, `8080` is the port we defined for pgAdmin to run on.
 
 ![pgadmin-login](/de-zc/w1/pgadmin-login.png)
 
@@ -124,13 +124,15 @@ defined in our docker-compose.yml file to login.
 
 Now that we've registered our server, we can demonstrate how our connection details remain after we exit our docker container.
 
-In you're terminal where you last ran `docker compose up` use the `CTRL + C` to exit the container. Now run the container again and you will notice a slight difference. We are now being prompted to enter our password for our previously defined connection. This shows how our previously saved connection details remained across container runs. This is because we enabled a pgAdmin volume in our `docker-compose.yml` file.
+In you're terminal where you last ran `docker compose up`, use the command `CTRL + C` to exit the container. Now run the container again, and you should notice a slight difference. We are now being prompted to enter our password for our previously defined connection. This shows how our previously saved connection details remained across container runs. This is because we enabled a pgAdmin volume in our `docker-compose.yml` file.
 
 ![pgadmin-resgster](/de-zc/w1/pgadmin-connection-persistent.png)
 
 # Building a Python Ingestion Script
 
-Before we get into the actual code, I'd like to break down some of the libraries we are using. We utilize the `pandas` library to read our CSV file as well as to insert our data into our database. `sqlaclehmy` is used to instantiate a sql engine that allows us to connect to our database, prior to performing the insert. The `argparse` library allows us to pass parameters such as the URL of our CSV file, our database name, our database credentials, etc. into our script via the Git Bash terminal. I'll demonstrate further in the next section. Lastly, we use a for loop to step through our taxi dataframe and insert that data into our database. You may ask why we are using a for loop rather than just inserting all the data at once. The answer is we are utilizing a concept known as "chunk sizing", which breaks a large dataframe into multiple smaller pieces. i.e. say we have a dataframe with 1,000,000 records. With chunk sizing, we split that dataframe into 10 pieces, 100,000 records each and insert them sequentially using a for loop. This is better for memory management and is often more effecient. 
+Before we get into the actual code, I'd like to break down some of the libraries we are using. We utilize the `pandas` library to read our CSV file as well as to insert our data into our database. `sqlaclehmy` is used to instantiate a sql engine that allows us to connect to our database, prior to performing the insert. The `argparse` library allows us to pass parameters such as the URL of our CSV file, our database name, our database credentials, etc. into our script via the Git Bash terminal. I'll demonstrate further in the next section. Lastly, we use a for loop to iterate (step through) our taxi dataframe and insert that data into our database. 
+
+You might ask why we are using a for loop rather than just inserting all the data at once. The answer is we are utilizing a concept known as "chunk sizing," which breaks a large dataframe into multiple smaller pieces. For example, say we have a dataframe with 1,000,000 records. With chunk sizing, we split that dataframe into 10 pieces, 100,000 records each and insert them sequentially using a for loop. This is better for memory management and is often more effecient when handling larger datasets. 
 
 ```
 import argparse
@@ -226,11 +228,11 @@ Lets break down this Dockerfile. Firstly, we are using the base image for python
 
 Secondly, we are installing `wget` which is a utility for downloading files for the web. If you recall back to our ingestion script, you'll notice we used this library to download our CSV file.
 
-Next, we are using `pip` (a python library to install packages) to install the libraries we need for our ingestion script to run, such as padas, sqlaclhemy, etc. 
+Next, we are using `pip` (a python library to install packages) to install the libraries we need for our ingestion script to run, such as pandas, sqlaclhemy, etc. 
 
 The command `WORKDIR /app` is setting our working directory to `/app`
 
-The `COPY` command is copying our ingestion script from our host machine to the container's working dirtectory `/app`.
+The `COPY` command is copying our ingestion script from our host machine to the container's working directory `/app`.
 
 Lastly, `ENTRYPOINT` is used to set the default state in which the container executes. In our case,
 when we run our docker image, it will execute `python ingest_data.py`.
