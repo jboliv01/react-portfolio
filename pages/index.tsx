@@ -122,7 +122,7 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
                   </div>
                   
                   <div className='flex items-center justify-between mt-4'>
-                    <Link href={`/posts/${id}`} className='text-teal-600 hover:underline dark:hover:text-teal-400' passHref>
+                    <Link href={`/posts/${id}`} className='text-teal-600 phone:mt-10 hover:underline dark:hover:text-teal-400' passHref>
                       Read More
                     </Link>
                   </div>
