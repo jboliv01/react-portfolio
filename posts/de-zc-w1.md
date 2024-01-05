@@ -208,7 +208,7 @@ if __name__ == '__main__':
 
 # Ingesting New York Taxi data into a PostgreSQL Database
 
-Now that we have written our ingestion script, the next step is to configure our docker file before we can actually run the script and ingest our data into our database. In the Dockerfile below, let's define our docker file below: 
+Now that we have written our ingestion script, the next step is to configure our `Dockerfile` before we can actually run the script and ingest our data into our database. In the Dockerfile below. Let's define our Dockerfile below: 
 
 ```
 FROM python:3.9.1
@@ -226,7 +226,7 @@ ENTRYPOINT ["python", "ingest_data.py"]
 
 Lets break down this Dockerfile. Firstly, we are using the base image for python version 3.9.1, which is essentially a pre-built python environment that will be installed & ready to use in our container.
 
-Secondly, we are installing `wget` which is a utility for downloading files for the web. If you recall back to our ingestion script, you'll notice we used this library to download our CSV file.
+Secondly, we are installing `wget`, a utility for downloading files for the web. If you recall back to our ingestion script, you'll notice we used `wget` to download our CSV file.
 
 Next, we are using `pip` (a python library to install packages) to install the libraries we need for our ingestion script to run, such as pandas, sqlaclhemy, etc. 
 
@@ -235,11 +235,13 @@ The command `WORKDIR /app` is setting our working directory to `/app`
 The `COPY` command is copying our ingestion script from our host machine to the container's working directory `/app`.
 
 Lastly, `ENTRYPOINT` is used to set the default state in which the container executes. In our case,
-when we run our docker image, it will execute `python ingest_data.py`.
+when we run our docker image, it will execute `python ingest_data.py`. You'll notice `ENTRYPOINT "bash"` has been commented out. `ENTRYPOINT "bash"` would start our terminal in our working directory, `/app` rather than executing our python script.
 
-Now that we have defined the docker file, we must build the docker image. For example, say your directory contains two files `/Zoomcamp/Week1/Dockerfile` & `/Zoomcamp/Week1/ingest_data.py`. You will then want to open a Git terminal in that directory and run the following. Don’t forget to add a `.` at the end of the command which means we want to use the Dockerfile in the current directory. 
+Now that we have defined the docker file, we must build the docker image. For example, say your directory contains two files `/Zoomcamp/Week1/Dockerfile` & `/Zoomcamp/Week1/ingest_data.py`. You will then want to open a Git terminal in the `/Zoomcamp/Week1/` directory and run the following:
 
 ```docker build -t taxi_ingest:v001 .```
+
+***Don’t forget to add a `.` at the end of the command which means we want to use the Dockerfile in the current directory.***
 
 `taxi_ingest` is the name of the image and `v001` is the tag we've defined.
 
@@ -262,7 +264,7 @@ taxi_ingest:v001 \
 --url=${URL}
 ```
 
-You will then run the same command, only slightly modified in order to ingest our Taxi Zone data. replace the `table` argument with a new table name to represent our `taxi_zone_data` and change the URL to the location of our zone data.
+You will then run the same command, only slightly modified in order to ingest our Taxi Zone data. Replace the `table` argument with a new table name to represent our `taxi_zone_data` and change the URL to the location of our zone data.
 
 `export URL="https://s3.amazonaws.com/nyc-tlc/misc/taxi+_zone_lookup.csv"`
 
@@ -279,7 +281,7 @@ taxi_ingest:v001 \
 --url=${URL}
 ```
 
-after running these commands, you should see some logs in the terminal. These are the print statements we defined in our ingestion script.
+After running these commands, you should see some logs in the terminal. These are the print statements we defined in our ingestion script.
 ![ingest-data](/de-zc/w1/ingest-data.png)
 
 With pgAdmin up in the browser, be sure to refresh the page and you should now see the `yellow_taxi_data` and `taxi_zone_data` under `Tables` in the `ny_taxi` database.
