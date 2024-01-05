@@ -100,8 +100,8 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
             <h3 className='text-3xl pt-2 pb-10 dark:text-white text-center text-bold'>Recent Blog Posts</h3>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10'>
               {allPostsData.map(({ id, date, title, tags, snippet }) => (
-                <div key={id} className=' rounded-lg overflow-visible p-5'>
-                  <div className='xl:h-80 lg:h-80 md:h-80 sm:h-80 phone:h-80'>
+                <div key={id} className='rounded-lg overflow-visible p-5'>
+                  <div className='xl:h-80 lg:h-80 md:h-80 sm:h-80 phone:h-90'>
                     {/* Tags go here */}
                     <div className='flex flex-wrap gap-2 mb-4'>
                       {tags.map((tag) => (
