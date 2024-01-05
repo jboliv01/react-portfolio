@@ -52,7 +52,7 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
         <link rel="icon" href="/code.png" />
         <meta property="og:title" content="Jonah Oliver - Data Analyst, Programmer, and Tech Enthusiast" />
         <meta property="og:description" content="Explore my journey in Data Analysis and Programming. Check out the blog for insights on tech trends and industry best practices." />
-        <meta property="og:image" content="/data-mentor.jpg" />
+        <meta property="og:image" content="/data-mentor.png" />
       </Head>
 
       <main className='bg-white px-10 md:px-20 lg:px-40 dark:bg-gray-900'>
