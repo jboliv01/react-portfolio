@@ -118,7 +118,7 @@ export default function Home({ allPostsData }: { allPostsData: Post[] }) {
                       <p className='text-gray-600 pl-2 dark:text-gray-400 text-lg font-semibold'>{formatDate(date)}</p>
                     </div>
                     {/* Snippet */}
-                    <p className='text-lg pt-2 font-semibold mb-2 dark:text-slate-400'>{snippet}</p>
+                    <p className='text-lg pt-2 font-semibold mb-2 mt-4 text-slate-600 dark:text-slate-400'>{snippet}</p>
                   </div>
                   
                   <div className='flex items-center justify-between mt-4'>
