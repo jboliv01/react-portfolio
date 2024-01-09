@@ -92,7 +92,7 @@ Adding an application to the system path may be simple concept to some, but for 
 For example, I've installed the Google Cloud SDK in the following location: `C:\Tools\google-cloud-sdk\`. Now that it's installed, we will weed to open `Environmental Variables` under our `System Properties`. An easy way to do this is to press the Windows key and search `Environmental Variables` and there should be an option that says `edit the system environmental variables`. Select this and you should see the following: ![system-properties](/de-zc/w1/system-properties.png)
 
 Select `Environmental Variables` at the bottom and you should now see a list of system variables, including your Path: 
-![env-variables](/de-zc/w1/env-variables.png)
+![env-variables]()
 
 Now click `Edit` and we will want to add the location of our Google Cloud Shell to the System Path. Mine is located in `C:\Tools\google-cloud-sdk\` but this is not the Path we need to add. We need to add `C:\Tools\google-cloud-sdk\Cloud SDK\google-cloud-sdk\bin` which is the location of the Google Cloud executable scripts that we need to run our `gcloud` shell commands. 
 
