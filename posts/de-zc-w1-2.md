@@ -18,7 +18,7 @@ You can find the specific Data Talks Club module I'll be discussing [here](https
 
 You can also subscribe to their newsletter and join their slack channel by visiting [https://datatalks.club/](https://datatalks.club/). 
 
-Now lets get into the Terraform module.
+Now lets get into the Terraform module which involves the following steps:
 
 - [Creating a GCP Project for Terraform](#creating-a-gcp-project-for-terraform)
 - [Configuring a GCP Service Account](#configuring-a-gcp-service-account)
@@ -31,7 +31,7 @@ Now lets get into the Terraform module.
 
 # Creating a GCP Project for Terraform
 
-The first step is create a new Project in the Google cloud console by selecting the drop down list then click the "New Project" button:
+The first step is to create a new Project in the Google cloud console by selecting the drop down list then click the "New Project" button:
 
 ![gcp-project-dropdown](/de-zc/w1/gcp-project-dropdown.png)
 
