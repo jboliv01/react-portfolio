@@ -1,15 +1,18 @@
 import Link from 'next/link';
 import Head from 'next/head'
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 import { gfmHeadingId } from 'marked-gfm-heading-id';
-import Image from 'next/image';
 import { CiClock1 } from "react-icons/ci";
 import { formatDate } from '/lib/utils.js';
-
+import {
+  AiFillTwitterCircle,
+  AiFillLinkedin
+} from 'react-icons/ai'
 
 const Post = ({ htmlString, data }) => {
   const router = useRouter();
@@ -25,7 +28,7 @@ const Post = ({ htmlString, data }) => {
         <meta name="description" content={data.description} />
         <link rel="icon" href="/code.png" />
       </Head>
-      <main className='mx-auto max-w-7xl'>
+      <main className='mx-auto max-w-7xl mb-28'>
         <div>
           <nav className="px-10 pt-10 shadow-md mx-auto">
             <div className="container justify-left max-w-screen-phone text rounded-md text-white hover:text-teal-400">
@@ -47,11 +50,13 @@ const Post = ({ htmlString, data }) => {
               </div>
               <div className="text-xl font-bold mb-5 text-gray-400">{data.readtime}</div>
             </div>
-
-
-
             <div dangerouslySetInnerHTML={{ __html: htmlString }} />
           </article>
+        </div>
+        <div className='text-5xl ml-10'>
+          <a className='hover:text-sky-700' href="https://www.linkedin.com/in/jonah-oliver/">
+            <AiFillLinkedin />
+          </a>
         </div>
       </main>
     </div>
